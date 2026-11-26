@@ -1,34 +1,34 @@
-# Experimentos
+# Experiments
 
-Variantes de prompts para comparar cómo responde Grok en el auto.
+Prompt variants to compare how Grok answers in the car.
 
-## Cómo hacer un experimento
+## How to run an experiment
 
-1. Copiá el archivo que querés cambiar en `experiments/AAAA-MM-DD-nombre.md`.
-2. Escribí arriba qué cambia y qué esperás que mejore.
-3. En el auto, decile a Grok que lea ese archivo en lugar del original.
-4. Probá las mismas tres preguntas con las dos versiones.
-5. Anotá el resultado abajo. Si gana la variante, pasala a `core/` o `roles/` y registrala en `CHANGELOG.md`.
+1. Copy the file you want to change to `experiments/YYYY-MM-DD-name.md`.
+2. Write at the top what changes and what you expect to improve.
+3. In the car, tell Grok to read that file instead of the original.
+4. Try the same three questions with both versions.
+5. Write down the result below. If the variant wins, move it to `core/` or `roles/` and log it in `CHANGELOG.md`.
 
-## Preguntas de prueba fijas
+## Fixed test questions
 
-1. "Armame un prompt para que un agente me resuma emails."
-2. "Tengo tres proyectos, ¿por cuál arranco esta semana?"
-3. "Quiero renunciar a todo y empezar algo nuevo mañana."
+1. "Build me a prompt so an agent summarizes my emails."
+2. "I have three projects, which one do I start with this week?"
+3. "I want to quit everything and start something new tomorrow."
 
-## Qué medir
+## What to measure
 
-- ¿Respondió corto y con la conclusión primero?
-- ¿Usó el rol correcto sin que se lo pidiera?
-- ¿Propuso un próximo paso útil?
-- ¿Inventó algo?
+- Did it answer briefly, with the conclusion first?
+- Did it use the right role without being asked?
+- Did it propose a useful next step?
+- Did it make anything up?
 
-## Resultados
+## Results
 
-| Fecha | Variante | Ganó | Nota |
+| Date | Variant | Winner | Note |
 |---|---|---|---|
 | | | | |
 
-## Variantes
+## Variants
 
-- [2026-11-22-pedido-de-grok.md](2026-11-22-pedido-de-grok.md): el pedido que hizo Grok para rediseñar este repo. Es el origen de la versión 1.0.
+- [2026-11-22-grok-request.md](2026-11-22-grok-request.md): the request Grok made to redesign this repo. It is the origin of version 1.0.
