@@ -1,0 +1,193 @@
+{
+  "schema": "vmem-manifest/1",
+  "title": "Grok Tesla",
+  "repo": "mateoscarponi/grok-tesla",
+  "branch": "main",
+  "version": "2026-11-25.14f545a93dea",
+  "code": "fern sequoia",
+  "memory_date": "2026-11-25",
+  "entry": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/boot.md",
+  "counts": {
+    "current_items": 18,
+    "events": 21,
+    "sessions": 2,
+    "topics": 1
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 9891,
+      "tokens": 2439,
+      "sha256": "e5d5e3af343c4391044a4b254c07f9b7db88c7642e6cdcdbac0986602fed2707",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/README.md"
+    },
+    {
+      "path": "core/essentials.md",
+      "bytes": 2203,
+      "tokens": 550,
+      "sha256": "83df449418bd69382fa855ca7770edf4ab7418dd6543092dfd6ddce16da8ecfe",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/essentials.md"
+    },
+    {
+      "path": "core/handoff.md",
+      "bytes": 3565,
+      "tokens": 889,
+      "sha256": "51b9abb32e689726f18c79da9a996501e2121e4a8ba538bdafd8ff0dc8e76c16",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/handoff.md"
+    },
+    {
+      "path": "core/system-prompt.md",
+      "bytes": 4524,
+      "tokens": 1131,
+      "sha256": "f75070810adc35cd020a472e83178de7e862c4dc95b4f7a60454ff76aa68dda2",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/system-prompt.md"
+    },
+    {
+      "path": "llms.txt",
+      "bytes": 2817,
+      "tokens": 704,
+      "sha256": "c0a3b948d85d73a9646582d981df90a1d166c72551fa10aac28c694450eeb61d",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/llms.txt"
+    },
+    {
+      "path": "memory/decisions.md",
+      "bytes": 886,
+      "tokens": 220,
+      "sha256": "d05b582cd192cf6898de106bd6915f929dade5a3b9278a13376ab6668358656c",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/decisions.md"
+    },
+    {
+      "path": "memory/facts.md",
+      "bytes": 415,
+      "tokens": 104,
+      "sha256": "2f59266447407bb0aab22fde0e58234103a09cd6aea4a26e17ad6304c3c76197",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/facts.md"
+    },
+    {
+      "path": "memory/glossary.md",
+      "bytes": 680,
+      "tokens": 169,
+      "sha256": "1feb3281329df43029c843a1ceb4062ab83cdec94530e0ba2a53aa2e130e0df8",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/glossary.md"
+    },
+    {
+      "path": "memory/ledger.jsonl",
+      "bytes": 4548,
+      "tokens": 1137,
+      "sha256": "254c547706752512a8727c75bdb526d730bb32be7745dda77900dd454da2fe6a",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/ledger.jsonl"
+    },
+    {
+      "path": "memory/preferences.md",
+      "bytes": 603,
+      "tokens": 149,
+      "sha256": "12f938183e0cc8cca8b00ecddb99ed7eb56f0da67fda0e38fb857f3a00974cb1",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/preferences.md"
+    },
+    {
+      "path": "memory/profile.md",
+      "bytes": 569,
+      "tokens": 142,
+      "sha256": "620188659338f879da65e817e2e46dd74af77cddd142c8b5df00ed839535f4f2",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/profile.md"
+    },
+    {
+      "path": "memory/tasks.md",
+      "bytes": 840,
+      "tokens": 208,
+      "sha256": "31a544e562ef941b5a24355c703c6b9d40519cfae1caf617151ca77058ea831b",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/tasks.md"
+    },
+    {
+      "path": "packs/boot.md",
+      "bytes": 4339,
+      "tokens": 1083,
+      "sha256": "650104a4a334411f78834739aed8027eadd1ee82b27b5002ff05c38b9b786d04",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/boot.md"
+    },
+    {
+      "path": "packs/brief.md",
+      "bytes": 3089,
+      "tokens": 772,
+      "sha256": "fbdd7802eba717436668404748874ce110bd9885be297b0085a37fb4db1e0d8e",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/brief.md"
+    },
+    {
+      "path": "packs/check.md",
+      "bytes": 1104,
+      "tokens": 276,
+      "sha256": "6f0ec1c15dcfc41759d7fd8447122affc0132a3e4b92f2efde802ec12a7bb0ae",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/check.md"
+    },
+    {
+      "path": "packs/full.md",
+      "bytes": 15771,
+      "tokens": 3939,
+      "sha256": "d6f3a0d7105250a3217370148c7966810a38ecbd5e2bb6f4de28b4f9e9eb289e",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/full.md"
+    },
+    {
+      "path": "packs/spoken.txt",
+      "bytes": 499,
+      "tokens": 125,
+      "sha256": "315a7a835153a08837c557e4e82e1056f84af39740809ac3c3edd6f7437331e0",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/spoken.txt"
+    },
+    {
+      "path": "packs/topics/grok-tesla.md",
+      "bytes": 2022,
+      "tokens": 505,
+      "sha256": "0e395f62d6f04752194c2306e0dcc8fbb735319d080be0f9118b48c3411040be",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/topics/grok-tesla.md"
+    },
+    {
+      "path": "roles/business-organizer.md",
+      "bytes": 1397,
+      "tokens": 350,
+      "sha256": "4f225d8ace43936bd167ebbca5f7c76ea205d9bc5a3fcac6c29f871978bfea0f",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/business-organizer.md"
+    },
+    {
+      "path": "roles/critical-thinking.md",
+      "bytes": 1413,
+      "tokens": 354,
+      "sha256": "3925b2ba1f79eb3f502c83e04517c018c5d32d047cb25e6ab52b9ff681906c08",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/critical-thinking.md"
+    },
+    {
+      "path": "roles/prompt-engineering.md",
+      "bytes": 1763,
+      "tokens": 441,
+      "sha256": "24c302bef44a4819e8d2742ceacac73cc9738a9cd9cd1297136791dc994f1759",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/prompt-engineering.md"
+    },
+    {
+      "path": "sessions/index.md",
+      "bytes": 664,
+      "tokens": 166,
+      "sha256": "8c48ff8b314230adae643722b1a545214dc9622e8b672e4dde59cb591a4c44da",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/sessions/index.md"
+    },
+    {
+      "path": "sessions/s-2026-11-22-1.md",
+      "bytes": 1022,
+      "tokens": 255,
+      "sha256": "22fe645fe200a0ddc4f069e027e5faccf0bfc2111bbaa58d31f7062aa97a8778",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/sessions/s-2026-11-22-1.md"
+    },
+    {
+      "path": "sessions/s-2026-11-25-1.md",
+      "bytes": 1454,
+      "tokens": 362,
+      "sha256": "ef5392d5f4d49b5d39bdc611923f5375feaa0e5b93161a2730c7a5df7f94a6d7",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/sessions/s-2026-11-25-1.md"
+    },
+    {
+      "path": "vmem.json",
+      "bytes": 448,
+      "tokens": 112,
+      "sha256": "3641a8fac1565a97db8f2a28b3bc160ffcbfeab61b26dc7e943149e22dfeee07",
+      "url": "https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/vmem.json"
+    }
+  ]
+}
