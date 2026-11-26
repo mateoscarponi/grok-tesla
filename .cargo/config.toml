@@ -1,0 +1,5 @@
+# On Windows with the GNU toolchain, use Rust's bundled (self-contained) MinGW linker.
+# A system MinGW on PATH breaks when the user folder contains a space ("C:\Users\Jane Doe").
+# Other platforms ignore this section.
+[target.x86_64-pc-windows-gnu]
+rustflags = ["-C", "link-self-contained=yes"]
