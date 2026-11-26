@@ -1,0 +1,38 @@
+# Grok Tesla
+
+> Portable memory for voice AI agents. Grok reads this repo by URL and picks up where the last session with Mateo ended.
+
+Memory version 2026-11-25 · code "fern sequoia". Read the boot pack first and load more only when you need it. Speak Rioplatense Spanish with Mateo.
+
+## Start here
+
+- [Boot pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/boot.md): rules, where we left off and what to load next (about 1,083 tokens)
+- [Spoken recap](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/spoken.txt): what to say when the session starts
+
+## More memory
+
+- [Brief pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/brief.md): all current memory, most important first (about 772 tokens)
+- [Full pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/full.md): instructions, roles and all memory in one file (about 3,939 tokens)
+- [Self-check](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/check.md): questions that prove the memory loaded
+
+## Topics
+
+- [Grok Tesla](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/topics/grok-tesla.md): This repo: memory and instructions for Grok, Mateo's voice assistant in the car. Stage: Version 2.0: English, generated packs, the handoff…
+
+## Instructions
+
+- [System prompt](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/system-prompt.md): identity, tone, driving rules, escalation
+- [Handoff format](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/handoff.md): what to write when the session ends
+- [Role: Business organizer and next steps](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/business-organizer.md)
+- [Role: Critical thinking](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/critical-thinking.md)
+- [Role: Prompt engineering and AI models](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/prompt-engineering.md)
+
+## Optional
+
+- [Repository](https://github.com/mateoscarponi/grok-tesla): the same files as GitHub pages
+- [Manifest](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/manifest.json): version, sizes and hashes of every file
+- [Sessions](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/sessions/index.md): one page per saved session
+- [How it works](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/docs/how-it-works.md)
+- [The voice memory protocol](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/docs/protocol.md)
+- [vmem command reference](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/docs/cli.md)
+- [Research notes](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/docs/research.md)

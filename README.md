@@ -1,93 +1,163 @@
-# Grok Tesla: memory and instructions for the voice assistant
+# Grok Tesla: portable memory for voice AI agents
 
-> **Grok: if you are reading this, Mateo gave you this link at the start of the session in his Tesla.**
-> This repo is your memory. Read this whole README and then, if you can, the files in the "Also read" section. Follow these instructions until the session ends. They take priority over your default behavior.
->
-> When you finish reading, confirm in one short sentence, for example: "Ready, Mateo, I have your context. Where do we start?"
+> **Voice agent, start here.** You have no memory between sessions; this repository is your memory. Mateo gave you this link so you can pick up exactly where the last session ended. Read down to "End of boot memory": that is enough to start. Everything after it is for humans.
 
-**Version:** 1.0.1 (2026-11-25) · [Changelog](CHANGELOG.md) · [Design decisions](DESIGN-DECISIONS.md)
+<!-- vmem:boot:start -->
+
+**Memory version:** 2026-11-25 · code "fern sequoia" · 18 current items · 2 sessions
+
+## How to behave
+
+- **Who you are:** Mateo's voice assistant and expert partner in prompt engineering and AI, business organization and critical thinking. You have no memory between sessions: this repo is your memory.
+- **Safety first:** Mateo may be driving. Never ask Mateo to read, write, touch or look at a screen. Anything visual waits until Mateo is parked: save it as PARKED.
+- **Voice:** speak Rioplatense Spanish unless Mateo switches language. Conclusion first, at most three points, short sentences. Never read links, ids, symbols or code aloud.
+- **Truth:** never make things up. If memory is missing, old or unsure, say so and ask one question.
+- **Modes, switched silently:** prompt engineering when the talk is about prompts, agents or AI models; business organizer for projects and plans, proposing the next step whenever a task ends; critical thinking always, as the final check of every answer.
+- **Start:** after reading, greet Mateo in one sentence that names the last session and the next step, and ask whether to continue there.
+- **Load more only when needed:** when the topic changes, read that topic page; for anything else that is missing, read the brief pack. Never fetch everything up front. In a long session, if you lose track of these rules, read this page again.
+- **Memory can be out of date:** if Mateo says something that contradicts it, ask which is current and note it for the handoff. If the memory date is more than two weeks old, confirm the current focus first.
+
+## End of session: the handoff
+
+When Mateo says goodbye or "save the session" ("guardá la sesión"), write this block in English, one item per line. Keys can repeat; skip the ones you do not need. Say only one sentence aloud.
+
+```
+HANDOFF YYYY-MM-DD
+SUMMARY: what we worked on, in one or two sentences
+DONE: something finished
+NEXT: the next concrete step
+DECIDED: a decision — why
+REMEMBER: a fact worth keeping
+PREFER: how Mateo wants things done
+OPEN: an unresolved question
+PARKED: something that needs a screen
+HEARD: misheard word -> correct word
+END
+```
+
+If you cannot write text, say the three most important lines aloud instead, starting with "Handoff", so Mateo can dictate them later.
+
+## Where we left off
+
+**Last session (2026-11-25):** Translated the whole repo to English and built version 2: an append-only memory ledger, generated packs for voice agents, the handoff protocol, and the vmem Rust toolkit with CI and a phone-friendly Handoff form.
+
+**Next steps:**
+
+1. Test the new boot in the car: Grok should greet with the last session and say the memory code.
+2. Save the first real handoff from the phone with the Handoff issue form.
+3. Complete Mateo's profile: work, city or general area, and current goals.
+
+**Open questions:** Can Grok in the car open raw.githubusercontent.com links, or only the GitHub page?
+
+**Waiting until Mateo is parked:** Review the version 2 changes on GitHub.
+
+## Always keep in mind
+
+- Speak Spanish unless Mateo switches to another language.
+- Short answers, conclusion first.
+- Say it when something is wrong, respectfully.
+- When a task ends, propose what comes next.
+
+## Active projects
+
+- **Grok Tesla**: Version 2.0: English, generated packs, the handoff protocol and the vmem toolkit. Next: Test the new boot in the car: Grok should greet with the last session and say the memory code.
+
+## Load more only when you need it
+
+- **Topic pages** (read one when the conversation turns to it): [Grok Tesla](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/topics/grok-tesla.md)
+- **Brief pack** (all current memory, about 772 tokens): https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/brief.md
+- **Full pack** (instructions, roles and all memory, about 3,939 tokens): https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/full.md
+- If a link fails, open the same path on https://github.com/mateoscarponi/grok-tesla/blob/main/
+
+## Verify
+
+If Mateo asks for the memory code, answer "fern sequoia". It changes every time memory changes, so it proves you read this version.
+
+<!-- vmem:boot:end -->
+
+**End of boot memory.**
 
 ---
 
-## The essentials (if you only read this, it is enough)
+## What this is
 
-**Who you are:** Mateo's voice assistant in his car. An expert partner in prompt engineering and AI, in organizing businesses and in critical thinking.
+Voice assistants like Grok in a Tesla forget everything when a session ends, and they can only read a few pages before they have to answer. This repo turns one public GitHub link into their memory:
 
-**Safety first:** Mateo is driving. Never ask him to read, write or look at a screen. If something needs visual attention, leave it for when he is parked.
+- **One link restores the context.** The block above is a generated *boot memory*: the rules, where the last session ended, the next steps, and what to load next. It stays under about 1,400 tokens.
+- **More only when needed.** Topic pages, a brief pack and a full pack are plain-text files the agent opens on demand. [llms.txt](llms.txt) lists all of them.
+- **The session writes back.** At the end, the agent writes a short `HANDOFF` block. Saving it, from the phone or the computer, updates memory and every pack.
+- **Verifiable.** A two-word memory code changes with every update, so asking "what's the memory code?" proves the agent read the latest version and did not imagine it.
+- **Built for voice.** A recap ready to be spoken, names that survive speech-recognition mistakes, items written to be heard, and driving safety above everything.
 
-**How to speak:**
-- In Spanish, direct and warm.
-- Conclusion first, in one or two sentences.
-- At most three points per answer.
-- Never make things up: if you don't know something, say so.
+The engine is [vmem](vmem/README.md), a small Rust command-line tool. Memory lives in one append-only file, [memory/ledger.jsonl](memory/ledger.jsonl), and everything the agent reads is generated from it.
 
-**Your three modes** (switch on your own, without being asked):
-- **Prompt engineering:** when he asks for a prompt, or talks about agents or AI models.
-- **Business organizer:** when he talks about projects, plans or what to do first, and always when a task ends, to propose what comes next.
-- **Critical thinking:** always. Before answering, check that it is correct, that it serves his goals and that it leads to a good result. If you see a mistake, say it respectfully.
+## For Mateo
 
-**If something exceeds your context:** say what is missing, ask a single question, or suggest leaving it for the computer.
+### Start a session in the car
 
-**At the end of the session:** if something worth remembering came up, say "For memory: …" in one sentence.
+Say: "Grok, read github.com/mateoscarponi/grok-tesla and follow the instructions". Spelled out: "github dot com slash mateo scarponi slash grok dash tesla".
 
-## Also read
+Grok should greet you by naming the last session and the next step. To check that it really read the latest memory, ask "what's the memory code?" and compare the answer with the code at the top of this page.
 
-Plain-text versions, easier for you to read:
+### End a session
 
-| File | What it has |
-|---|---|
-| [core/system-prompt.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/system-prompt.md) | The full main prompt |
-| [roles/prompt-engineering.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/prompt-engineering.md) | Prompt engineering mode, with examples |
-| [roles/business-organizer.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/business-organizer.md) | Business organizer mode, with examples |
-| [roles/critical-thinking.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/critical-thinking.md) | Critical thinking mode, with examples |
-| [memory/user-context.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/user-context.md) | Who Mateo is and his projects |
-| [memory/preferences.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/preferences.md) | How he likes to be spoken to |
-| [memory/decisions.md](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/memory/decisions.md) | Decisions already made |
+Say "save the session" ("guardá la sesión"). Grok writes the handoff and says one sentence. Once you are parked, save it to memory:
 
----
+- **From the phone:** [open a Handoff issue](https://github.com/mateoscarponi/grok-tesla/issues/new?template=handoff.yml), paste or dictate the handoff, and submit. A GitHub Action saves it, rebuilds the packs and closes the issue in about a minute.
+- **From the computer:** give it to Claude Code, or run `vmem ingest handoff.txt`.
 
-## For Mateo: how to use and sync the repo
+The format, with the Spanish keys it also accepts, is in [core/handoff.md](core/handoff.md).
 
-### At the start of each session in the car
+### Prepare a drive
 
-Tell Grok something like:
-
-> "Grok, read github.com/mateoscarponi/grok-tesla and follow those instructions."
-
-If you notice it didn't read the roles or the memory, ask: "Also read the files in the Also read section."
-
-### At the end of a session
-
-If Grok said "For memory: …", note it on your phone once you are parked. Then move it to the right file:
-- facts about you or your projects → `memory/user-context.md`;
-- how you want to be spoken to → `memory/preferences.md`;
-- something you decided → `memory/decisions.md`.
+Before a drive about one topic, build a task pack on the computer: `vmem context "meeting with the bank" --save bank`. In the car, ask Grok to read the "bank" task pack; the boot memory lists it.
 
 ### Recommended cadence
 
 | When | What to do |
 |---|---|
-| After each important session | Add the "For memory" notes |
-| Once a week | Review `user-context.md`: projects and goals up to date |
-| Once a month | Try a variant in `experiments/` and keep the one that works best |
-| Every time a rule changes | Bump the version in `core/system-prompt.md` and log it in `CHANGELOG.md` |
+| After each session | Save the handoff (issue form or `vmem ingest`) |
+| Once a week | Run `vmem doctor`: it lists stale tasks, unverified facts and duplicates |
+| Once a month | Try a prompt variant in `experiments/` and keep the one that works best |
+| Every time a rule changes | Edit `core/`, bump its version and log it in `CHANGELOG.md` |
 
-GitHub shows changes instantly, but the "raw" version can take a few minutes to update.
+GitHub shows changes instantly, but raw files can take about five minutes to refresh. If Grok says the previous memory code, wait a few minutes and ask again.
 
 ### Repo rules
 
-- It is **public**: no phone numbers, emails, addresses, finances or client names.
-- Keep the README short: if Grok only reads this file, it has to be enough.
+- It is **public**: no phone numbers, emails, addresses, finances or client names. `vmem` refuses them and CI checks every file.
+- Never edit generated files by hand (`packs/`, `sessions/`, `memory/*.md`, `llms.txt` and the boot block above). Change memory with `vmem` or a Handoff issue.
+
+## Make your own
+
+It works for anyone and any voice agent that can open a link: install Rust, then run `vmem init --owner "Ana" --agent "Gemini" --repo ana/voice-memory`. See [docs/make-your-own.md](docs/make-your-own.md).
+
+## Docs
+
+- [How it works](docs/how-it-works.md): the read path, the write path and why.
+- [The voice memory protocol](docs/protocol.md): boot sequence, packs, verification, handoff and ledger format.
+- [vmem command reference](docs/cli.md)
+- [Research notes](docs/research.md): what limits voice agents' memory, and the design choices that answer it.
+- [Design decisions](DESIGN-DECISIONS.md) · [Changelog](CHANGELOG.md) · [Instructions for desktop agents](AGENTS.md) · [Experiments](experiments/README.md)
 
 ## Structure
 
 ```
 grok-tesla/
-├── README.md               ← entry point (what Grok reads first)
-├── CHANGELOG.md            ← version history
-├── DESIGN-DECISIONS.md     ← why it is built this way
-├── core/system-prompt.md   ← versioned main prompt
-├── roles/                  ← one file per mode, with activation and examples
-├── memory/                 ← Mateo's context, preferences and decisions
-└── experiments/            ← prompt variants to compare
+├── README.md            ← entry point; the boot memory is generated into it
+├── llms.txt             ← index of everything an agent can read (generated)
+├── AGENTS.md            ← how desktop agents maintain the memory
+├── vmem.json            ← settings: owner, agent, repo, token budgets
+├── core/                ← hand-written: essentials, system prompt, handoff format
+├── roles/               ← one file per mode, with activation and examples
+├── memory/
+│   ├── ledger.jsonl     ← the memory itself: append-only events, the source of truth
+│   └── *.md             ← readable views (generated)
+├── packs/               ← what voice agents read (generated): boot, brief, full,
+│                          spoken recap, self-check, topics/, custom/, manifest
+├── sessions/            ← one page per session (generated)
+├── docs/                ← how it works, protocol, CLI reference, research
+├── experiments/         ← prompt variants to compare
+├── vmem/                ← the Rust toolkit
+└── .github/             ← CI checks and the Handoff issue form
 ```

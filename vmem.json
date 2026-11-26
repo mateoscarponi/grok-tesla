@@ -1,0 +1,23 @@
+{
+  "schema": "vmem-config/1",
+  "title": "Grok Tesla",
+  "tagline": "Portable memory for voice AI agents",
+  "owner": "Mateo",
+  "agent": "Grok",
+  "repo": "mateoscarponi/grok-tesla",
+  "branch": "main",
+  "speak": "Rioplatense Spanish",
+  "budgets": {
+    "boot": 1400,
+    "brief": 3200,
+    "full": 16000,
+    "spoken_words": 90
+  },
+  "stale_days": {
+    "task": 30,
+    "question": 30,
+    "project": 60,
+    "fact": 180
+  },
+  "packs": []
+}
