@@ -1,0 +1,61 @@
+# Checks every push and pull request: vmem's tests, the doctor (privacy,
+# injection, staleness, links, budgets) and that generated files match the
+# ledger. On main, files left stale by a hand edit of the ledger (for example
+# on github.com) are rebuilt and committed.
+name: memory
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: memory-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Rust builds
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            vmem/target
+          key: vmem-${{ runner.os }}-${{ hashFiles('vmem/Cargo.lock', 'vmem/src/**', 'vmem/tests/**') }}
+          restore-keys: vmem-${{ runner.os }}-
+
+      - name: Test and build vmem
+        run: |
+          if [ -f vmem/Cargo.toml ]; then
+            cargo test --locked --release --manifest-path vmem/Cargo.toml
+            echo "$PWD/vmem/target/release" >> "$GITHUB_PATH"
+          else
+            cargo install --locked --git https://github.com/mateoscarponi/grok-tesla vmem
+          fi
+
+      - name: Rebuild generated files (main only)
+        if: github.event_name != 'pull_request'
+        run: |
+          vmem build
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Rebuild generated memory files"
+            git push
+          fi
+
+      - name: Generated files are up to date
+        run: vmem build --check
+
+      - name: Doctor
+        run: vmem doctor
