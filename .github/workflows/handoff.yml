@@ -1,0 +1,94 @@
+# Saves a voice session handoff sent from the phone through the Handoff issue
+# form: ingests it, runs the doctor, commits, comments what changed and closes
+# the issue. Anyone can open an issue on a public repo, so only issues opened
+# by the repo owner are saved. To retry after a failure, edit the issue, then
+# close and reopen it.
+name: handoff
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: memory-refs/heads/main
+  cancel-in-progress: false
+
+jobs:
+  save:
+    if: contains(github.event.issue.labels.*.name, 'handoff') && github.event.issue.author_association == 'OWNER'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Cache Rust builds
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            vmem/target
+          key: vmem-${{ runner.os }}-${{ hashFiles('vmem/Cargo.lock', 'vmem/src/**', 'vmem/tests/**') }}
+          restore-keys: vmem-${{ runner.os }}-
+
+      - name: Build vmem
+        run: |
+          if [ -f vmem/Cargo.toml ]; then
+            cargo build --locked --release --manifest-path vmem/Cargo.toml
+            echo "$PWD/vmem/target/release" >> "$GITHUB_PATH"
+          else
+            cargo install --locked --git https://github.com/mateoscarponi/grok-tesla vmem
+          fi
+
+      - name: Save the handoff
+        env:
+          BODY: ${{ github.event.issue.body }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set -o pipefail
+          printf '%s\n' "$BODY" > "$RUNNER_TEMP/handoff.txt"
+          vmem ingest "$RUNNER_TEMP/handoff.txt" --source "issue #$NUMBER" 2>&1 | tee "$RUNNER_TEMP/report.txt"
+          vmem doctor 2>&1 | tee -a "$RUNNER_TEMP/report.txt"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Save handoff from issue #$NUMBER"
+          git push
+
+      - name: Comment and close
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "Saved to memory. The next session starts from it."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/report.txt"
+            echo '```'
+          } > "$RUNNER_TEMP/comment.md"
+          gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/comment.md"
+          gh issue close "$NUMBER" --repo "$GITHUB_REPOSITORY"
+
+      - name: Explain the failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "Could not save this handoff. Nothing was written to memory."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/report.txt" 2>/dev/null || echo "No report."
+            echo '```'
+            echo
+            echo "Edit the issue to fix the text, then close and reopen it to try again."
+          } > "$RUNNER_TEMP/comment.md"
+          gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/comment.md"

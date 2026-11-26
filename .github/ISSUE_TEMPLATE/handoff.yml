@@ -1,0 +1,22 @@
+name: Handoff
+description: Save the end of a voice session into memory.
+title: "Handoff"
+labels: ["handoff"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Paste the HANDOFF block the voice agent wrote, or dictate the lines. English or Spanish keys both work: SUMMARY / RESUMEN, NEXT / SIGUIENTE, DECIDED / DECIDIDO, REMEMBER / RECORDAR, OPEN / PREGUNTA, PARKED / ESTACIONADO, HEARD / ESCUCHADO. Plain text with no keys becomes the session summary.
+
+        Only the repo owner's handoffs are saved. This repo is public: no private data.
+  - type: textarea
+    id: handoff
+    attributes:
+      label: Handoff
+      placeholder: |
+        HANDOFF 2026-11-25
+        SUMMARY: What we worked on
+        NEXT: The next concrete step
+        END
+    validations:
+      required: true
