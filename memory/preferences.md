@@ -5,7 +5,6 @@ A readable view of `memory/ledger.jsonl`. To change memory, use `vmem` (see AGEN
 
 ## Preferences
 
-- Speak Spanish unless Mateo switches to another language. · pinned · 2026-11-22 · `pref-2`
 - Short answers, conclusion first. · pinned · 2026-11-22 · `pref-1`
 - Say it when something is wrong, respectfully. · 2026-11-22 · `pref-4`
 - When a task ends, propose what comes next. · 2026-11-22 · `pref-3`

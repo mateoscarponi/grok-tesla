@@ -413,7 +413,7 @@ impl<'a> Ctx<'a> {
         let parked = st.open_tasks(true);
         if !parked.is_empty() {
             let list: Vec<String> = parked.iter().take(max_parked).map(|t| sentence(&t.text)).collect();
-            s.push_str(&format!("\n**Waiting until {} is parked:** {}\n", self.cfg.owner, list.join(" ")));
+            s.push_str(&format!("\n**Waiting for a screen:** {}\n", list.join(" ")));
         }
         s
     }
@@ -668,8 +668,8 @@ impl<'a> Ctx<'a> {
         }
         match st.open_tasks(true).len() {
             0 => {}
-            1 => parts.push("One thing is waiting until you are parked.".into()),
-            n => parts.push(format!("{n} things are waiting until you are parked.")),
+            1 => parts.push("One thing is waiting for a screen.".into()),
+            n => parts.push(format!("{n} things are waiting for a screen.")),
         }
         parts.push("Do you want to pick up there?".into());
         let budget = self.cfg.budgets.spoken_words.max(20);
@@ -692,7 +692,7 @@ impl<'a> Ctx<'a> {
             &format!("{}: memory self-check", c.title),
             &format!(
                 "If you really loaded this memory, you can answer all of these. {} may ask any of them to test you. If you cannot, read the brief pack again before you continue.",
-                c.owner
+                capitalize(&c.owner)
             ),
         );
         let last = match st.last_session() {
@@ -995,8 +995,8 @@ impl<'a> Ctx<'a> {
         let c = self.cfg;
         let tokens = |p: &str| files.get(p).map(|s| thousands(est_tokens(s))).unwrap_or_else(|| "?".into());
         let mut s = format!(
-            "# {}\n\n> {}. {} reads this repo by URL and picks up where the last session with {} ended.\n\nMemory version {}. Read the boot pack first and load more only when you need it. Speak {} with {}.\n",
-            c.title, c.tagline, c.agent, c.owner, self.v.label(), c.speak, c.owner
+            "# {}\n\n> {}. {} reads this repo by URL and picks up where the last session with {} ended.\n\nMemory version {}. Read the boot pack first and load more only when you need it. Speak {}.\n",
+            c.title, c.tagline, c.agent, c.owner, self.v.label(), c.speak
         );
         s.push_str("\n## Start here\n\n");
         s.push_str(&format!(
@@ -1034,7 +1034,7 @@ impl<'a> Ctx<'a> {
         }
         s.push_str("\n## Instructions\n\n");
         if self.system_prompt.is_some() {
-            s.push_str(&format!("- [System prompt]({}): identity, tone, driving rules, escalation\n", c.raw_url(SYSTEM_PROMPT)));
+            s.push_str(&format!("- [System prompt]({}): identity, tone, voice format, escalation\n", c.raw_url(SYSTEM_PROMPT)));
         }
         if self.handoff_spec.is_some() {
             s.push_str(&format!("- [Handoff format]({}): what to write when the session ends\n", c.raw_url(HANDOFF_SPEC)));

@@ -20,7 +20,7 @@ READ PATH (start of every session)
 
 WRITE PATH (end of every session)
 
-  voice agent ── HANDOFF block ──► Mateo saves it ──────► vmem ingest ──► memory/ledger.jsonl
+  voice agent ── HANDOFF block ──► the user saves it ───► vmem ingest ──► memory/ledger.jsonl
                                    (Handoff issue form     closes tasks, adds new items,
                                     or a desktop agent)    skips duplicates, learns
                                                            misheard names, records the session
@@ -50,11 +50,11 @@ Because nothing is deleted, `vmem history <id>` shows how an item changed, and `
 |---|---|---|---|
 | README block / `packs/boot.md` | ≤ 1,400 tokens | Behavior essentials, where we left off, pinned memory, active projects, links to load more, memory code | Always, first |
 | `packs/topics/<slug>.md` | small | Everything about one project, person or topic, including recent sessions | When the conversation turns to it |
-| `packs/custom/<slug>.md` | chosen budget | Memory selected for one task, prepared on the computer | When Mateo asks for that pack |
+| `packs/custom/<slug>.md` | chosen budget | Memory selected for one task, prepared on the computer | When the user asks for that pack |
 | `packs/brief.md` | ≤ 3,200 tokens | All current memory, most important first, with a note of what did not fit | When something is missing |
 | `packs/full.md` | no budget | System prompt, roles, handoff format and all memory | Rarely |
 | `packs/spoken.txt` | ≤ 90 words | A recap written to be said aloud | At the greeting |
-| `packs/check.md` | small | Questions that prove the memory was loaded | When Mateo tests the agent |
+| `packs/check.md` | small | Questions that prove the memory was loaded | When the user tests the agent |
 | `packs/manifest.json` | small | Version, code, size and hash of every file | Tools and audits |
 | `llms.txt` | small | Index of all of the above | Agents that look for it |
 
@@ -65,14 +65,14 @@ Every pack is plain Markdown served from `raw.githubusercontent.com`, the easies
 - **A small first read.** The boot carries what a session needs to start, so one fetch is enough, and the rules sit at the top where they are least likely to fall out of a long conversation.
 - **Progressive loading.** Topic pages and packs are loaded only when needed, the way a person checks their notes.
 - **Written to be heard.** Items are short sentences, the recap is ready to speak, and the rules say never to read links, ids or code aloud.
-- **Names survive speech recognition.** Every project, person and term can carry aliases ("Matteo" for Mateo). A `HEARD` line in a handoff teaches a new one. Search and topic linking use sound-alike keys for English and Spanish, so a misheard "groc tesla" still finds the Grok Tesla project.
+- **Names survive speech recognition.** Every project, person and term can carry aliases ("Groc" for Grok). A `HEARD` line in a handoff teaches a new one. Search and topic linking use sound-alike keys for English and Spanish, so a misheard "groc tesla" still finds the Grok Tesla project.
 - **It proves what it read.** The two-word memory code changes with every change. If the agent says the wrong code, it read an old or imagined copy.
-- **Safety first.** The essentials put driving safety above everything; anything that needs a screen becomes a parked task.
+- **Nothing depends on a screen.** Anything visual becomes a parked task for later.
 
 ## Automation
 
 - **CI** (`.github/workflows/memory.yml`): runs the tests, `vmem doctor` and `vmem build --check` on every push and pull request. On `main`, if someone edited the ledger by hand (for example on github.com), CI rebuilds the generated files and commits them.
-- **Handoff form** (`.github/ISSUE_TEMPLATE/handoff.yml` + `.github/workflows/handoff.yml`): Mateo pastes or dictates a handoff from the phone; the workflow saves it, rebuilds, comments what changed and closes the issue. Only the repo owner's issues are saved, because anyone can open an issue on a public repo.
+- **Handoff form** (`.github/ISSUE_TEMPLATE/handoff.yml` + `.github/workflows/handoff.yml`): the owner pastes or dictates a handoff from the phone; the workflow saves it, rebuilds, comments what changed and closes the issue. Only the repo owner's issues are saved, because anyone can open an issue on a public repo.
 - **MCP** (`vmem mcp`): desktop agents get the same memory as tools, with the same validation.
 
 ## Safety and privacy

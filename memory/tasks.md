@@ -5,9 +5,8 @@ A readable view of `memory/ledger.jsonl`. To change memory, use `vmem` (see AGEN
 
 ## Next steps
 
-- Test the new boot in the car: Grok should greet with the last session and say the memory code. · 2026-11-25 · `task-2`
 - Save the first real handoff from the phone with the Handoff issue form. · 2026-11-25 · `task-3`
-- Complete Mateo's profile: work, city or general area, and current goals. · 2026-11-22 · `task-1`
+- Test the new boot in the car: Grok should greet with the last session and say the memory code. · 2026-11-25 · `task-2`
 
 ## Waiting for a screen
 

@@ -3,5 +3,6 @@
 
 Newest first. Each page lists what the session changed.
 
+- **2026-11-27**: Made the repo general and professional: no personal details, and rules written for any user of a voice agent. [s-2026-11-27-1](s-2026-11-27-1.md)
 - **2026-11-25**: Translated the whole repo to English and built version 2: an append-only memory ledger, generated packs for voice agents, the handoff protocol, and the vmem Rust toolkit with CI and a phone-friendly Handoff form. [s-2026-11-25-1](s-2026-11-25-1.md)
 - **2026-11-22**: Created the repo and version 1.0 from Grok's own request: modular folders, a versioned system prompt, three roles and memory templates. [s-2026-11-22-1](s-2026-11-22-1.md)

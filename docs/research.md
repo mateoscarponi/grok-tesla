@@ -8,9 +8,9 @@ What limits the memory of voice agents today, and how each part of this repo ans
 2. **The first read must be small and fast.** In a voice conversation, silence is felt immediately. Research on streaming voice memory puts the real-time budget around 500 ms and argues that a voice model can use only a handful of high-density items, not the long retrieval lists text agents get. One page fetch at the start of a session is acceptable; a dozen are not.
 3. **Context decays inside long sessions.** Rules read at the start can be pushed out of a long conversation. The rules that matter most must be short and sit at the top.
 4. **No write access.** The agent can open a public link but cannot commit. Something outside the agent has to close the loop, and it has to work from a phone.
-5. **Speech recognition mangles names.** Proper nouns are the most common error. This repo's own history shows it: when Grok wrote the prompt that became version 1.0, it spelled Mateo as "Matteo".
+5. **Speech recognition mangles names.** Proper nouns are the most common error. In this repo's own tests, "Grok" comes back as "Groc" and "Grock".
 6. **Agents can claim to have read what they did not.** An agent may answer from a cached copy, or improvise when a link fails, and the person cannot see what it read.
-7. **The listener may be driving.** Nothing can depend on looking at a screen, long lists are useless by ear, and links or ids read aloud are noise.
+7. **The listener can't look at a screen.** Nothing can depend on reading, long lists are useless by ear, and links or ids read aloud are noise.
 8. **A public link is public forever.** Anything committed is world-readable and stays in the git history.
 9. **Memory becomes instructions.** Whatever the agent reads at boot shapes its behavior, so memory is also an attack surface for injected instructions.
 
@@ -36,7 +36,7 @@ These are general techniques from agent-memory work, adapted here to static file
 | No write access | A fixed `HANDOFF` block the agent writes; saved from a phone issue form or a desktop agent |
 | Misheard names | Aliases on every name, `HEARD` corrections, sound-alike keys for English and Spanish in search and linking |
 | Claimed reading | A two-word memory code that changes with every change, plus a self-check page |
-| Driving | Safety rules on top, a spoken recap, parked tasks for anything visual |
+| No screen | A spoken recap, and parked tasks for anything visual |
 | Public forever | Privacy screening on every write and on every file in CI |
 | Memory as instructions | Instruction-like text is refused; behavior lives only in `core/` |
 | Stale memory | A memory date, a two-week freshness rule, validity windows, doctor warnings |

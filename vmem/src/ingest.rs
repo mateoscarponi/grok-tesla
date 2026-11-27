@@ -387,7 +387,7 @@ mod tests {
             r#"{"op":"add","id":"task-1","at":"2026-11-20","kind":"task","text":"Complete the profile in memory"}"#, "\n",
             r#"{"op":"add","id":"task-2","at":"2026-11-21","kind":"task","text":"Record a demo video"}"#, "\n",
             r#"{"op":"add","id":"pref-1","at":"2026-11-20","kind":"preference","text":"Short answers, conclusion first"}"#, "\n",
-            r#"{"op":"add","id":"pers-1","at":"2026-11-20","kind":"person","title":"Mateo","text":"Owner"}"#, "\n",
+            r#"{"op":"add","id":"pers-1","at":"2026-11-20","kind":"person","title":"Ana","text":"Owner"}"#, "\n",
         ).to_string());
         State::fold(&l.events, None)
     }
@@ -396,7 +396,7 @@ mod tests {
     fn plans_a_session() {
         let st = state();
         let h = handoff::parse(
-            "HANDOFF 2026-11-25\nSUMMARY: Worked on groc tesla.\nDONE: completed the profile\nNEXT: record a demo video\nNEXT: publish the demo on LinkedIn\nDECIDED: Use English in the repo — any agent can read it\nPREFER: Short answers, conclusion first\nHEARD: Matteo -> Mateo; Kye -> Kai\nEND",
+            "HANDOFF 2026-11-25\nSUMMARY: Worked on groc tesla.\nDONE: completed the profile\nNEXT: record a demo video\nNEXT: publish the demo on LinkedIn\nDECIDED: Use English in the repo — any agent can read it\nPREFER: Short answers, conclusion first\nHEARD: Anna -> Ana; Jon -> John\nEND",
         );
         let p = plan(&st, &h, Date::parse("2026-11-25").unwrap(), "test");
         let ops: Vec<String> = p.events.iter().map(|e| format!("{} {}", e.op, e.id)).collect();
@@ -426,10 +426,10 @@ mod tests {
     fn resolves_misheard_names() {
         let st = state();
         let idx = EntityIndex::from_state(&st);
-        let m = idx.resolve("we talked about groc tesla with matteo");
+        let m = idx.resolve("we talked about groc tesla with anna");
         let names: Vec<&str> = m.iter().map(|m| m.name.as_str()).collect();
         assert!(names.contains(&"Grok Tesla"), "{m:?}");
-        assert!(names.contains(&"Mateo"), "{m:?}");
-        assert_eq!(idx.best("Matteo").map(|e| e.id.as_str()), Some("pers-1"));
+        assert!(names.contains(&"Ana"), "{m:?}");
+        assert_eq!(idx.best("Anna").map(|e| e.id.as_str()), Some("pers-1"));
     }
 }

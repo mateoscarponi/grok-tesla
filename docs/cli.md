@@ -53,8 +53,8 @@ Kinds: `profile`, `preference`, `rule`, `goal`, `project`, `person`, `decision`,
 vmem remember project "Online course about prompt design" --title "Prompt Course" --alias "prom course" --state "Outline ready"
 vmem remember decision "Launch on Monday" --why "fewer people travel" --topic prompt-course
 vmem remember fact "The conference runs March 3 to 5" --valid-from 2027-03-03 --valid-to 2027-03-05
-vmem remember preference "Very short answers while driving" --supersedes pref-1
-vmem set term-1 --alias "Matteo"
+vmem remember preference "Very short answers" --supersedes pref-1
+vmem set proj-1 --alias "groc tesla"
 vmem done task-3 --note "recorded and sent"
 vmem ingest handoff.txt --dry-run
 vmem search "bank meeting" --kind task

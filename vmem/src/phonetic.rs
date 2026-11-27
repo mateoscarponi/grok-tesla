@@ -1,14 +1,14 @@
 //! Approximate phonetic keys for English and Spanish names.
 //!
-//! Speech recognition mishears names: "Grok" becomes "Groc", "Mateo" becomes
-//! "Matteo", "Hunter" becomes "Junter". Two spellings that sound alike get the
+//! Speech recognition mishears names: "Grok" becomes "Groc", "Ana" becomes
+//! "Anna", "Hugo" becomes "Jugo". Two spellings that sound alike get the
 //! same (or a very close) key, so `vmem` can still find the right entry.
 //!
 //! The key keeps consonant sounds and drops vowels after the first letter:
 //! b/v/p merge (Spanish b and v sound alike), d/t and g/k merge (voiced and
 //! voiceless pairs that recognizers confuse), soft c/z/s merge, h and j are
-//! dropped, and sh/ch/ll/consonant y merge (Rioplatense Spanish pronounces
-//! "ll" and "y" like "sh").
+//! dropped, and sh/ch/ll/consonant y merge (in many Spanish dialects
+//! "ll" and "y" sound like "sh").
 
 use crate::text::fold;
 
@@ -207,19 +207,19 @@ mod tests {
     fn misheard_names_share_keys() {
         assert_eq!(key("Grok"), key("Groc"));
         assert_eq!(key("Grok"), key("Grock"));
-        assert_eq!(key("Mateo"), key("Matteo"));
-        assert_eq!(key("Hunter"), key("Junter"));
-        assert_eq!(key("Built by Oak"), key("build by oke"));
-        assert_eq!(key("Kai"), key("Kye"));
+        assert_eq!(key("Ana"), key("Anna"));
+        assert_eq!(key("Hugo"), key("Jugo"));
+        assert_eq!(key("Open Road"), key("open rode"));
+        assert_eq!(key("Leah"), key("Lia"));
         assert_eq!(key("llamas"), key("yamas"));
     }
 
     #[test]
     fn similarity_separates_names() {
         assert!(similarity("Groc", "Grok") >= 0.85);
-        assert!(similarity("Matteo", "Mateo") >= 0.85);
-        assert!(similarity("Escarponi", "Scarponi") >= 0.8);
-        assert!(similarity("Mario", "Mateo") < 0.6);
+        assert!(similarity("Anna", "Ana") >= 0.85);
+        assert!(similarity("Espinosa", "Spinosa") >= 0.8);
+        assert!(similarity("Mario", "Ana") < 0.6);
         assert!(similarity("work", "Grok") < 0.7);
         assert!(similarity("Tesla", "Texla") >= 0.75);
     }

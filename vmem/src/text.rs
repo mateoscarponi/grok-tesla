@@ -87,7 +87,7 @@ pub fn tokens(s: &str) -> Vec<String> {
         .collect()
 }
 
-/// "Built by Oak!" -> "built-by-oak". At most 48 characters.
+/// "Open Road Trip!" -> "open-road-trip". At most 48 characters.
 pub fn slugify(s: &str) -> String {
     let mut out = String::new();
     let mut dash = false;
@@ -265,12 +265,12 @@ mod tests {
     #[test]
     fn tokens_drop_stopwords_and_plurals() {
         assert_eq!(tokens("The tasks for the decisiones"), vec!["task", "decision"]);
-        assert_eq!(tokens("Mateo quiere respuestas cortas"), vec!["mateo", "quiere", "respuesta", "corta"]);
+        assert_eq!(tokens("Ana quiere respuestas cortas"), vec!["ana", "quiere", "respuesta", "corta"]);
     }
 
     #[test]
     fn slugs_are_stable() {
-        assert_eq!(slugify("Built by Oak!"), "built-by-oak");
+        assert_eq!(slugify("Open Road Trip!"), "open-road-trip");
         assert_eq!(slugify("  grok-tesla  "), "grok-tesla");
         assert_eq!(slugify("Diseño & Código"), "diseno-codigo");
     }
@@ -299,7 +299,7 @@ mod tests {
 
     #[test]
     fn detects_spanish() {
-        assert!(looks_spanish("Mateo quiere que el próximo paso sea para la web"));
-        assert!(!looks_spanish("Mateo wants the next step to be the website"));
+        assert!(looks_spanish("Ana quiere que el próximo paso sea para la web"));
+        assert!(!looks_spanish("Ana wants the next step to be the website"));
     }
 }

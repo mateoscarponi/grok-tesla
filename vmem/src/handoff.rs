@@ -6,7 +6,7 @@
 //! SUMMARY: We planned the v2 launch.
 //! NEXT: Record the demo video
 //! DECIDED: Launch on Monday — fewer people travel
-//! HEARD: Matteo -> Mateo
+//! HEARD: Anna -> Ana
 //! END
 //! ```
 //!
@@ -351,13 +351,13 @@ mod tests {
     #[test]
     fn parses_a_full_block() {
         let h = parse(
-            "Some chatter before.\nHANDOFF 2026-11-25\nSUMMARY: We planned the launch.\nDONE: wrote the README\nNEXT: record the demo; send it to Kai\nDECIDED: Launch Monday — fewer people travel\nREMEMBER: The demo must be under two minutes\nPREFER: Numbers rounded\nOPEN: Which price?\nPARKED: Review the slides\nHEARD: Matteo -> Mateo, Groc → Grok\nTOPICS: grok-tesla\nEND\nAfter the block.",
+            "Some chatter before.\nHANDOFF 2026-11-25\nSUMMARY: We planned the launch.\nDONE: wrote the README\nNEXT: record the demo; send it to Sam\nDECIDED: Launch Monday — fewer people travel\nREMEMBER: The demo must be under two minutes\nPREFER: Numbers rounded\nOPEN: Which price?\nPARKED: Review the slides\nHEARD: Anna -> Ana, Groc → Grok\nTOPICS: grok-tesla\nEND\nAfter the block.",
         );
         assert!(h.had_block);
         assert_eq!(h.date.unwrap().to_string(), "2026-11-25");
         assert_eq!(h.summary, vec!["We planned the launch."]);
         assert_eq!(h.done, vec!["wrote the README"]);
-        assert_eq!(h.next, vec!["record the demo", "send it to Kai"]);
+        assert_eq!(h.next, vec!["record the demo", "send it to Sam"]);
         assert_eq!(h.decided, vec!["Launch Monday — fewer people travel"]);
         assert_eq!(h.remember.len(), 1);
         assert_eq!(h.prefer, vec!["Numbers rounded"]);
@@ -365,7 +365,7 @@ mod tests {
         assert_eq!(h.parked, vec!["Review the slides"]);
         assert_eq!(
             h.heard,
-            vec![("Matteo".to_string(), "Mateo".to_string()), ("Groc".to_string(), "Grok".to_string())]
+            vec![("Anna".to_string(), "Ana".to_string()), ("Groc".to_string(), "Grok".to_string())]
         );
         assert_eq!(h.topics, vec!["grok-tesla"]);
     }
@@ -382,9 +382,9 @@ mod tests {
 
     #[test]
     fn finds_keys_in_a_transcript_without_block() {
-        let h = parse("Mateo: let's stop here\nGrok: For memory: Mateo wants rounded numbers.\nGrok: Next step: call the bank\nwith the new numbers");
+        let h = parse("Ana: let's stop here\nGrok: For memory: Ana wants rounded numbers.\nGrok: Next step: call the bank\nwith the new numbers");
         assert!(!h.had_block);
-        assert_eq!(h.remember, vec!["Mateo wants rounded numbers."]);
+        assert_eq!(h.remember, vec!["Ana wants rounded numbers."]);
         assert_eq!(h.next, vec!["call the bank with the new numbers"]);
     }
 

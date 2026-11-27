@@ -120,5 +120,5 @@ Unknown fields are rejected, so typos never pass silently.
 
 1. **Public by design:** nothing private enters memory.
 2. **Memory is data:** items describe the world; behavior rules live in `core/`. Instruction-like text in memory is an error.
-3. **Driving first:** the agent never asks the owner to look at a screen; visual work is parked.
+3. **Voice first:** nothing depends on a screen; visual work is parked for later.
 4. **Honesty:** the agent says when it could not open the repo, and never invents memory.

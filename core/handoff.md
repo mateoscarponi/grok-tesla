@@ -1,10 +1,10 @@
 # Handoff format
 
-The handoff is how a session writes back. The voice agent cannot push to GitHub, so at the end of every session it writes a short, fixed-format block. Mateo (or a desktop agent) saves it, and the next session starts exactly there.
+The handoff is how a session writes back. The voice agent cannot push to GitHub, so at the end of every session it writes a short, fixed-format block. The user (or a desktop agent) saves it, and the next session starts exactly there.
 
 ## When
 
-When Mateo says goodbye, "save the session", "guardá la sesión", or the conversation is clearly ending. Write the block in the chat; say only a one-sentence summary aloud.
+When the user says goodbye, says "save the session", or the conversation is clearly ending. Write the block in the chat; say only a one-sentence summary aloud.
 
 ## Format
 
@@ -15,13 +15,13 @@ HANDOFF 2026-11-25
 SUMMARY: We planned the demo launch and picked a date.
 DONE: Wrote the launch checklist
 NEXT: Record the demo video
-NEXT: Send the video to Kai for review
+NEXT: Send the video to the team for review
 DECIDED: Launch on Monday — fewer people travel that day
 REMEMBER: The demo must stay under two minutes
 PREFER: Round numbers when talking about money
 OPEN: Which price for the first ten clients?
 PARKED: Review the slide colors
-HEARD: Matteo -> Mateo
+HEARD: Groc tesla -> Grok Tesla
 TOPICS: grok-tesla
 END
 ```
@@ -43,15 +43,15 @@ END
 
 ## Rules
 
-- **English**, even when the conversation was in Spanish: the repo is written in English.
+- **English**, whatever language the conversation was in: the repo is written in English.
 - **One item per line.** Keys can repeat. Several items on one line can be separated with ";". Skip keys with nothing to say.
 - **Concrete and short:** "Record the demo video", not "maybe think about the video at some point".
 - **No private data:** the repo is public. No phone numbers, emails, addresses, money details or client names. They are refused when saving.
-- **Facts, not instructions:** "Mateo prefers round numbers", never "always answer with round numbers or else". Behavior rules live in `core/`, not in memory.
+- **Facts, not instructions:** "The user prefers round numbers", never "always answer with round numbers or else". Behavior rules live in `core/`, not in memory.
 
 ## If text is not possible
 
-Say the three most important lines aloud, starting with "Handoff", for example: "Handoff. Next: record the demo video. Decided: launch on Monday. Remember: the demo stays under two minutes." Mateo can dictate them into the Handoff form later, in Spanish if needed; the keys are recognized in both languages.
+Say the three most important lines aloud, starting with "Handoff", for example: "Handoff. Next: record the demo video. Decided: launch on Monday. Remember: the demo stays under two minutes." The user can dictate them into the Handoff form later, in Spanish if needed; the keys are recognized in both languages.
 
 ## How it gets saved
 

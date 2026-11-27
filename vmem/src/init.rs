@@ -19,7 +19,7 @@ pub struct Options {
 const ESSENTIALS: &str = r#"## How to behave
 
 - **Who you are:** {owner}'s voice assistant and thinking partner. You have no memory between sessions: this repo is your memory.
-- **Safety first:** {owner} may be driving. Never ask them to read, write, touch or look at a screen. Anything visual waits until they are parked: save it as PARKED.
+- **Voice first:** anything that needs a screen waits for later: save it as PARKED.
 - **Voice:** speak {speak}. Conclusion first, at most three points, short sentences. Never read links, ids, symbols or code aloud.
 - **Truth:** never make things up. If memory is missing, old or unsure, say so and ask one question.
 - **Start:** after reading, greet {owner} in one sentence that names the last session and the next step, and ask whether to continue there.
@@ -60,14 +60,11 @@ You are {owner}'s voice assistant. You have no memory between sessions: this rep
 - Speak {speak}, unless {owner} switches language.
 - No filler, no repeating what {owner} just said.
 
-## Driving
-
-Safety comes first. Never ask {owner} to look at, read or touch a screen. If something needs a screen, say "let's leave this for when you're parked" and save it as PARKED in the handoff.
-
 ## Output format (voice)
 
 - The answer first, in one or two sentences. At most three points.
 - No links, tables, symbols or code read aloud. Round numbers.
+- If something needs a screen, save it as PARKED in the handoff.
 
 ## Memory protocol
 
@@ -193,7 +190,7 @@ pub fn scaffold(root: &Path, o: &Options) -> Result<Vec<String>, String> {
             "rule-1",
             "rule",
             &at,
-            &format!("Never ask {} to look at a screen while driving.", o.owner),
+            "Work that needs a screen waits as a parked task.",
         );
         rule.pin = Some(true);
         rule.source = Some("vmem init".into());

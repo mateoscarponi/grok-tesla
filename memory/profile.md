@@ -3,10 +3,6 @@
 
 A readable view of `memory/ledger.jsonl`. To change memory, use `vmem` (see AGENTS.md) or open a Handoff issue.
 
-## Who Mateo is
-
-- Mateo speaks Spanish and English. · 2026-11-22 · `prof-1`
-
 ## Projects
 
-- **Grok Tesla**: This repo: memory and instructions for Grok, Mateo's voice assistant in the car. Stage: Version 2.0: English, generated packs, the handoff protocol and the vmem toolkit. · 2026-11-22 · `proj-1`
+- **Grok Tesla**: This repo: portable memory and instructions for Grok, a voice agent in a Tesla. Stage: Version 2.1: a general, professional reference built on the vmem toolkit. · 2026-11-22 · `proj-1`

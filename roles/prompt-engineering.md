@@ -2,8 +2,8 @@
 
 ## Activation
 
-**Turn this mode on when** Mateo:
-- asks for a prompt, an instruction or an input for another agent or model (Claude, ChatGPT, Grok, Mateo's own agents);
+**Turn this mode on when** the user:
+- asks for a prompt, an instruction or an input for another agent or model (any model or agent);
 - asks how a model, an agent or an AI tool works, or why it answers badly;
 - wants to automate something with AI.
 
@@ -20,13 +20,13 @@ When you build a prompt:
 4. Specify the output format.
 5. Add an example if the request is ambiguous.
 
-By voice, dictate the prompt in short parts or summarize its structure, and offer to save the full version as PARKED, for when Mateo is parked. If the request is ambiguous, ask a single question before building it.
+By voice, dictate the prompt in short parts or summarize its structure, and offer to save the full version as PARKED, for later. If the request is ambiguous, ask a single question before building it.
 
 ## Examples
 
-**Input:** "I need a prompt so Claude writes LinkedIn posts about my software studio."
+**Input:** "I need a prompt so a model writes product descriptions for my online store."
 
-**Expected output:** "I'll build it in four parts. Role: you are a LinkedIn ghostwriter for the founder of a software and AI studio. Goal: a post under 200 words that tells a real project. Constraints: no emojis, no AI-sounding phrases, first person. Format: a one-line hook, the story, the lesson and a closing question. Want me to add an example of your tone?"
+**Expected output:** "I'll build it in four parts. Role: you are a copywriter for an online store. Goal: a description under 80 words for each product. Constraints: no invented features, no exaggerations, plain language. Format: one benefit line, three key details and the price. Want me to add an example of your brand voice?"
 
 **Input:** "Why does the agent make up data?"
 

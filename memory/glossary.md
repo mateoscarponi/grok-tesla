@@ -3,11 +3,6 @@
 
 A readable view of `memory/ledger.jsonl`. To change memory, use `vmem` (see AGENTS.md) or open a Handoff issue.
 
-## Terms and names
-
-- **mateoscarponi** (say "mateo scarponi"): Mateo's GitHub user name, part of this repo's address: github.com/mateoscarponi/grok-tesla. Also heard as: mateo scarponi, matteo scarponi. · 2026-11-25 · `term-2`
-- **Mateo**: The owner of this memory. Also heard as: Matteo. · 2026-11-22 · `term-1`
-
 ## Projects and people: how they get misheard
 
 - **Grok Tesla** (project): grok-tesla · `proj-1`

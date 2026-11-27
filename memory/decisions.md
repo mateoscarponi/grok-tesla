@@ -5,7 +5,8 @@ A readable view of `memory/ledger.jsonl`. To change memory, use `vmem` (see AGEN
 
 ## Current, newest first
 
+- Keep the repo general, with no personal details about the user. Why: it is public and works as a reference for any voice agent. · 2026-11-27 · `dec-5`
 - Show a two-word memory code in every pack. Why: asking for it proves Grok read the latest version. · 2026-11-25 · `dec-4`
 - Keep memory in one append-only ledger and generate everything Grok reads with vmem. Why: one source of truth, small packs, nothing lost. · 2026-11-25 · `dec-3`
-- Write the repo in English; Grok still speaks Spanish with Mateo. Why: any agent or person can read it, and English costs fewer tokens. · 2026-11-25 · `dec-2`
+- Write the repo in English; Grok still speaks the user's language. Why: any agent or person can read it, and English costs fewer tokens. · 2026-11-25 · `dec-2`
 - Use a public GitHub repo as Grok's memory. Why: Grok keeps no memory between sessions, but it can open public links. · 2026-11-22 · `dec-1`

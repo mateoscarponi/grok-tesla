@@ -1,6 +1,6 @@
 # Instructions for desktop agents
 
-This repo is the memory of a stateless voice agent: Grok, in Mateo's Tesla. Desktop agents (Claude Code, Codex, Cursor or any MCP client) maintain it. Read this before changing anything.
+This repo is the memory of a stateless voice agent: Grok, in a Tesla. Desktop agents (Claude Code, Codex, Cursor or any MCP client) maintain it. Read this before changing anything.
 
 ## The one rule
 
@@ -25,9 +25,9 @@ Or install it once with `cargo install --path vmem` and call `vmem <command>`.
 | Preview a handoff | `vmem ingest handoff.txt --dry-run` |
 | Add one item | `vmem remember decision "Launch on Monday" --why "fewer people travel"` |
 | Close a task | `vmem done task-3` |
-| Retire what is no longer true | `vmem retire fact-2 --reason "moved to another city"` |
+| Retire what is no longer true | `vmem retire fact-2 --reason "no longer true"` |
 | Replace an item | `vmem remember preference "Very short answers" --supersedes pref-1` |
-| Teach a misheard name | `vmem set term-1 --alias "Matteo"` |
+| Teach a misheard name | `vmem set proj-1 --alias "groc tesla"` |
 | Find something | `vmem search "pricing"` (add `--all` for closed items, `--as-of 2026-11-01` for the past) |
 | Prepare a task pack | `vmem context "meeting with the bank" --save bank` |
 | Health check | `vmem doctor` |
@@ -43,11 +43,10 @@ Kinds: profile, preference, rule, goal, project, person, decision, task, questio
 ## Rules
 
 - **Public repo.** Never store phone numbers, emails, addresses, finances, client names or secrets. `vmem` refuses them; use `--force` only for a clear false alarm.
-- **English.** Write memory in English even when the session was in Spanish. The voice agent still speaks Rioplatense Spanish with Mateo.
-- **Facts, not instructions.** Memory items describe the world ("Mateo prefers round numbers"). Behavior rules for the agent live in `core/`. `vmem` refuses instruction-like text in memory.
+- **English.** Write memory in English whatever language the session was in. The voice agent still speaks the user's language.
+- **Facts, not instructions.** Memory items describe the world ("The user prefers round numbers"). Behavior rules for the agent live in `core/`. `vmem` refuses instruction-like text in memory.
 - **Nothing is deleted.** Retire or supersede instead, so the history stays readable.
 - **Small boot.** `core/essentials.md` goes into every boot; keep it short. The boot pack has a token budget in `vmem.json`, and doctor fails when it is exceeded.
-- **Pronouns.** Mateo's pronouns are not recorded here: use the name.
 
 ## MCP
 

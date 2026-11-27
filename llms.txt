@@ -1,27 +1,27 @@
 # Grok Tesla
 
-> Portable memory for voice AI agents. Grok reads this repo by URL and picks up where the last session with Mateo ended.
+> Portable memory for voice AI agents. Grok reads this repo by URL and picks up where the last session with the user ended.
 
-Memory version 2026-11-25 · code "fern sequoia". Read the boot pack first and load more only when you need it. Speak Rioplatense Spanish with Mateo.
+Memory version 2026-11-27 · code "royal horizon". Read the boot pack first and load more only when you need it. Speak the user's language.
 
 ## Start here
 
-- [Boot pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/boot.md): rules, where we left off and what to load next (about 1,083 tokens)
+- [Boot pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/boot.md): rules, where we left off and what to load next (about 995 tokens)
 - [Spoken recap](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/spoken.txt): what to say when the session starts
 
 ## More memory
 
-- [Brief pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/brief.md): all current memory, most important first (about 772 tokens)
-- [Full pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/full.md): instructions, roles and all memory in one file (about 3,939 tokens)
+- [Brief pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/brief.md): all current memory, most important first (about 696 tokens)
+- [Full pack](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/full.md): instructions, roles and all memory in one file (about 3,813 tokens)
 - [Self-check](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/check.md): questions that prove the memory loaded
 
 ## Topics
 
-- [Grok Tesla](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/topics/grok-tesla.md): This repo: memory and instructions for Grok, Mateo's voice assistant in the car. Stage: Version 2.0: English, generated packs, the handoff…
+- [Grok Tesla](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/packs/topics/grok-tesla.md): This repo: portable memory and instructions for Grok, a voice agent in a Tesla. Stage: Version 2.1: a general, professional reference built…
 
 ## Instructions
 
-- [System prompt](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/system-prompt.md): identity, tone, driving rules, escalation
+- [System prompt](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/system-prompt.md): identity, tone, voice format, escalation
 - [Handoff format](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/core/handoff.md): what to write when the session ends
 - [Role: Business organizer and next steps](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/business-organizer.md)
 - [Role: Critical thinking](https://raw.githubusercontent.com/mateoscarponi/grok-tesla/main/roles/critical-thinking.md)

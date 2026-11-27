@@ -11,16 +11,17 @@ Why the repo is built this way. If you change any of this, write it down here wi
 3. **Public repo, no private data.** (2026-11-22)
    Grok can only open public links. Anyone can read what is written here.
 
-4. **Spanish and voice first.** (2026-11-22)
-   Mateo speaks Spanish while driving. Every rule favors short answers that are easy to listen to.
+4. **Voice first.** (2026-11-22)
+   The user listens instead of reading. Every rule favors short answers that are easy to listen to.
 
-5. **Driving safety is above any role.** (2026-11-22)
+5. **Nothing depends on a screen.** (2026-11-22)
+   Anything visual becomes a parked task for later.
 
 6. **Changes with traceability.** (2026-11-22)
    Every change goes to `CHANGELOG.md`; every prompt test goes to `experiments/`.
 
-7. **The repo is written in English; Grok still speaks Mateo's language.** (2026-11-25)
-   English makes the repo readable for any agent and any person, and it costs fewer tokens. The instructions still tell Grok to speak Spanish with Mateo.
+7. **The repo is written in English; the agent speaks the user's language.** (2026-11-25)
+   English makes the repo readable for any agent and any person, and it costs fewer tokens. The instructions still tell the agent to speak the user's language.
 
 8. **One ledger is the only memory; everything Grok reads is generated.** (2026-11-25)
    Hand-kept memory files drift apart and lose history. An append-only ledger keeps every change, and generated packs can never disagree with it.
@@ -35,7 +36,7 @@ Why the repo is built this way. If you change any of this, write it down here wi
     Two easy words derived from a hash of all sources. A voice agent can claim to have read a link it could not open; asking for the code exposes it.
 
 12. **The session writes back through a fixed handoff; Grok never writes to the repo.** (2026-11-25)
-    Grok cannot commit. A short block with fixed keys is easy for Grok to write and for `vmem` to parse, in English or Spanish, and Mateo can save it from the phone.
+    Grok cannot commit. A short block with fixed keys is easy for Grok to write and for `vmem` to parse, in English or Spanish, and the user can save it from the phone.
 
 13. **Names carry aliases, and matching is sound-alike.** (2026-11-25)
     Speech recognition fails most on names. Aliases, HEARD corrections and phonetic keys keep a misheard name pointing at the right memory.
@@ -48,3 +49,6 @@ Why the repo is built this way. If you change any of this, write it down here wi
 
 16. **No embeddings, no server, no model calls in the toolkit.** (2026-11-25)
     A static public link is the whole point. Keyword search with sound-alike matching and topic pages are enough for a personal memory, and they stay offline, deterministic and testable.
+
+17. **General by design.** (2026-11-27)
+    The repo describes a generic user and holds no personal details. Anyone can read it as a reference implementation and start their own with `vmem init`.

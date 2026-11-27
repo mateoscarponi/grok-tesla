@@ -22,7 +22,7 @@ This creates `vmem.json`, `core/` (essentials, system prompt, handoff format), a
 
 ## 3. Make it yours
 
-- Edit `core/essentials.md`: who the agent is for you, how it should talk, the safety rules. Keep it short; it goes into every boot.
+- Edit `core/essentials.md`: who the agent is for you, how it should talk, what waits for a screen. Keep it short; it goes into every boot.
 - Edit `core/system-prompt.md` with the long version. Add files in `roles/` if you want modes, each with an activation section.
 - Add memory:
 

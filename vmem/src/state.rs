@@ -4,8 +4,8 @@
 //! Two clocks matter:
 //! - recorded time: the `at` of each event. `fold(.., Some(date))` replays the
 //!   ledger only up to that date, to show what memory looked like back then.
-//! - valid time: `valid_from` / `valid_to` on an item ("Mateo is in Panama
-//!   from January 2 to January 10"). An item outside its window is not current.
+//! - valid time: `valid_from` / `valid_to` on an item ("a trip from January 2
+//!   to January 10"). An item outside its window is not current.
 //!
 //! The memory clock is the date of the newest event. Packs are built against
 //! it, never against the wall clock, so builds are reproducible.
